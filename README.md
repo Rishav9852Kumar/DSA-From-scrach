@@ -1,5 +1,25 @@
 # Data-Structure-
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 PRIMITIVE DATA STRUCTURE:-
                 1>int
                 2>float
