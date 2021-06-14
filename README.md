@@ -1,31 +1,12 @@
 # Data-Structure-
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 PRIMITIVE DATA STRUCTURE:-
-                1>int
-                2>float
-                3>char
-                4>double
-                5>pointer
+               
+               1>int
+               2>float
+               3>char
+               4>double
+               5>pointer
 
 NON PRIMITIVE DATA STRUCTURE:-
              
@@ -37,7 +18,7 @@ NON PRIMITIVE DATA STRUCTURE:-
                   
                   iii)stacks={using array , using linked list}
                   
-                  iv)Queue={using array , using linked list , circular}
+                  iv)Queue={using array , using linked list , circular queue ,double ended queue , priority queue }
               
               2>NON LINEAR(random):-
                
