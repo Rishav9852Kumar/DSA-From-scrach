@@ -1,231 +1,154 @@
-#include <bits/stdc++.h>//Program to Display the tree Transversal's (In-order,Pre-order,Postorder) //
+#include <bits/stdc++.h>//Constructing and displaying in order pre order and post order expression  of Binary Search Tree//
+
 using namespace std;
-
-class node  //Declaration of class node//
+class node //declaration of Class of node type //
 {  public:
-      int data;
-      class node*left;
-      class node*right;
-}*root,*new_,*Root; //Global declaration of new and root node //
-
-class roots//Declaration of class element for queue//
-{  public:
-    class node*value;
-    class roots*next;
-}*front_,*rear=0,*temp,*new__;
-
-
-
-void enque(class node *root ) //Function to add an address at the end of the queue//
-{
-new__=(class roots*)malloc(sizeof(class roots*));
-new__->value=root;
-new__->next=0;
-if(front_==0)
-{
-    front_=new__;
-    rear=new__;
-}else
-{
-    rear->next=new__;
-    rear=new__;
-}
-}
-
-class node* dequeue()//Function to remove an elemnt from the front of the queue//
-{
-
-    class node *x;
-    if(front_==0)
-    {
-        cout<<"empty"<<endl;
-        x=0;
-    }else
-    {
-        x= front_->value;
-        front_=front_->next;
-
-    }
-    return x;
-}
-
-                              //Function to create a new node which  take int data as input//
-class node* create_node(int data){ // and returns the address of new created node//
-  new_=(class node*)malloc(sizeof(class node*));
-  new_->data=data;//Declaring data //
-  new_->left=0;//initializi       //Function to add a node in the tree with address of parent node and input data as input //
-class node* Insert(class node* root,int data)//And returning address of the child  node created//
-{
-
-    if(root==0)// If the Binary Tree is empty //
-    {
-        root = create_node(data); /Declaring first node as root node//
-
-    }else
-    {
-     if(root->left==0)
-     {
-     }else if(root->right==0)
-     {
-        root->right= create_node(data);
-        enque(root->right);
-     }else
-     {
-         root=dequeue();//When all the child Nodes are fulled then one new child node is created //
-                       //using one previous child node as new parent node //
-         root=Insert(root,data);
-     }
-}
-
-return root;
-}
-
- void displays() //Function to display the Present Contents of the Queue //
-{ cout<<"\n--------------------------------------"<<endl;
-  cout<<"Contents of the queue are :- "<<endl;
-    if(front_==0)
-{
-    cout<<"The queue is empty "<<endl;
-}else
- {  temp=front_;
-    while(temp!=0)
-    {
-    cout<<temp->value->data<<" -> ";
-    temp=temp->next;
-    }
-    cout<<"\n--------------------------------------\n"<<endl;
- }
-}
+    int value;
+    int counts;
+    class node*l;
+    class node*r;
+}*new_,*r=0;
 class node* Display_Inorder(class node*k)
 {
-
-    if(k->left!=0)
-    {
-
-     k->left=Display_Inorder(k->left);
-     cout<<k->data<<" ";
-     k->right=Display_Inorder(k->right);
-
-    }else
-    {
-        cout<<k->data<<" ";
-
-    }
-
-    return k;
+   if(k!=0)
+   {
+       k->l=Display_Inorder(k->l);
+       cout<<k->value<<" ";
+       k->r=Display_Inorder(k->r);
+   }
+   return k;
 }
 class node* Display_Preorder(class node*k)
 {
   if(k!=0){
-    cout<<k->data<<" ";
-    k->left=Display_Preorder(k->left);
-    k->right=Display_Preorder(k->right);
+    cout<<k->value<<" ";
+    k->l=Display_Preorder(k->l);
+    k->r=Display_Preorder(k->r);
   }
     return k;
 }
 class node* Display_Postorder(class node*k)
 {
- if((k->left!=0)&&(k->right!=0))
+ if((k->l!=0)&&(k->r!=0))
     {
 
-     k->left=Display_Postorder(k->left);
-     k->right=Display_Postorder(k->right);
+     k->l=Display_Postorder(k->l);
+     k->r=Display_Postorder(k->r);
 
-     cout<<k->data<<" ";
-    }else if ((k->left==0)&&(k->right!=0))
+     cout<<k->value<<" ";
+    }else if ((k->l==0)&&(k->r!=0))
     {
-        k->right=Display_Postorder(k->right);
-        cout<<k->data<<" ";
-    }else if ((k->left!=0)&&(k->right==0))
+        k->r=Display_Postorder(k->r);
+        cout<<k->value<<" ";
+    }else if ((k->l!=0)&&(k->r==0))
     {
-        k->left=Display_Postorder(k->left);
-        cout<<k->data<<" ";
+        k->l=Display_Postorder(k->l);
+        cout<<k->value<<" ";
     }
     else
     {
 
-        cout<<k->data<<" ";
+        cout<<k->value<<" ";
 
     }
 
     return k;
-
-    return k;
 }
- void Display(class node *Root)//Function to display our tree //
- {
-     if(Root==0)
-     {
-         exit(0);
-     }else
-     {
-        cout<<"Root=                "<<Root->data<<endl;
-        cout<<"               "<<endl;
-        if(Root->left!=0){
-        cout<<"Child_nodes =     "<<Root->left->data;
-        if(Root->right!=0){
-        cout<<"      "<<Root->right->data<<endl;
-        cout<<"---------------------------------"<<endl;
-        enque(Root->left);
-        cout<<"child enqueued = "<<Root->left->data<<endl;}else
-        {
-        cout<<"       "<<"--"<<endl;
-        exit(0);
-        }
-        enque(Root->right);
-         cout<<"child enqueued = "<<Root->right->data<<endl;}else
-         {
-             exit(0);
-         }
-         displays();
-        Root=dequeue();//Taking one of the previous child node as parent node for new element to be added //
-        Display(Root);
-
-
-     }
- }
-int main()
+class node*display(class node*root)
 {
-   Root=Insert(root,1);//Code for fixed inputs //
-   root=Root;
-   root=Insert(root,2);
-   root=Insert(root,3);
-   root=Insert(root,4);
-   root=Insert(root,5);
-   root=Insert(root,50);
-   root=Insert(root,60);
-   root=Insert(root,70);
-   root=Insert(root,80);
-   root=Insert(root,90);
-   root=Insert(root,100);
-   root=Insert(root ,0);
-   root=Insert(root ,990);
-   root=Insert(root ,880);
-  class node*k= Root;
-   while(front_!=0)//  Emptying the contents of Queue ,so that it can be used again //
-   {
-       dequeue();
-   }
-    cout<<"======================================================"<<endl;
-   cout<<"To display the tree press :- 1 "<<endl;
-   cout<<"To display the In-order expression press 2"<<endl;
-   cout<<"To display the Pre order expression press 3"<<endl;
-   cout<<"To display the Post Order expression press 4"<<endl;
-   int choice ;
-   cin>>choice;
-   switch (choice)
-   {
-       case 1:{Display(Root);
-       break;}
-       case 2:{k=Display_Inorder(k);
-       break;}
-        case 3:{k=Display_Preorder(k);
-       break;}
-        case 4:{k=Display_Postorder(k);
-       break;}
-       default:{cout<<"enter the correct choice "<<endl;}
-   }
+    if(root!=0)
+    {
+        cout<<"\nparent =      "<<root->value<<"("<<root->counts<<")"<<endl;
+        if((root->l!=0)&&(root->r!=0)){
+        cout<<"childs =   "<<root->l->value<<"        "<<root->r->value<<endl;
+        root->l=display(root->l);
+        root->r=display(root->r);
+        }else if((root->l==0)&&(root->r!=0)){
+        cout<<"childs =   "<<" - "<<"       "<<root->r->value<<endl;
+        root->r=display(root->r);
+        }else if((root->l!=0)&&(root->r==0)){
+        cout<<"childs =   "<<root->l->value<<"        "<<"- "<<endl;
+        root->l=display(root->l);
+        }else{
+        cout<<"childs =   "<<"- "<<"       "<<"- "<<endl;
+        }
+        return root;
+    }
+
+}
+
+class node*add(class node*root,int data)
+{
+    if(root==0)
+    {
+    new_=new node;//Creating a new node by dynamic memory allocation //
+    new_->value=data;
+    new_->counts=1;
+    new_->l=0;
+    new_->r=0;
+    root=new_;
+    cout<<root->value<<" new node created "<<endl;
+    }else if(data>root->value)
+    {
+       root->r=add(root->r,data);
+    }else if(data<root->value)
+    {
+        root->l=add(root->l,data);
+    }else if(data==root->value)
+    {
+        root->counts=root->counts+1;
+    }
+     return root;
+};
+int main()
+{ /*class node* r=0;  // Use this to run the program with fixed inputs //
+ r=add(r,9);
+ r=add(r,4);
+ r=add(r,6);
+ r=add(r,3);
+ r=add(r,42);
+ r=add(r,8);
+ r=add(r,28);
+ r=add(r,7);
+ r=add(r,7);
+ r=display(r);
+  cout<<"\nIn order expression = ";
+  r=Display_Inorder(r);
+  cout<<"\n\nPre order expression = ";
+  r=Display_Preorder(r);
+  cout<<"\n\nPost order expression = ";
+  r=Display_Postorder(r);
+ cout<<endl;
+*/
+    int i,exit=0,data; // Use this for Dynamic input //
+    char choice;
+    class node* r=0;
+    while(exit!=1)
+    {   cout << "\nTo add an element press y else to exit press n :- " << endl;
+        cin>>choice;
+        switch(choice)
+        {
+            case 'y':{ cout<<"Insert the item to add :- ";
+                       cin>>data;
+                       r=add(r,data);
+                       r=display(r);
+                      }break;
+            case 'n':{cout<<" All items added "<<endl;
+                      r=display(r);
+                      cout<<"\nIn order expression = ";
+                      r=Display_Inorder(r);
+                      cout<<"\n\npre order expression = ";
+                      r=Display_Preorder(r);
+                      cout<<"\n\npost order expression = ";
+                      r=Display_Postorder(r);
+                      cout<<endl;
+                      exit=1;
+                      }break;
+            default:{cout<<"enter the correct choice "<<endl;}
+        }
+    }
 
 
     return 0;
 }
+
