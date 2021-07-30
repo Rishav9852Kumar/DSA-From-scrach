@@ -12,7 +12,7 @@ NON PRIMITIVE DATA STRUCTURE:-
              
              1>LINEAR:-
                  
-                  i)Array
+                  i)Array,Vectors
                   
                   ii)List={single , double , circular}
                   
