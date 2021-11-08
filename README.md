@@ -1,6 +1,7 @@
 # Data-Structure-
 
-    ###PRIMITIVE DATA STRUCTURE:-
+
+### PRIMITIVE DATA STRUCTURE:-
                
                1>int
                2>float
@@ -8,7 +9,7 @@
                4>double
                5>pointer
 
-    ###NON PRIMITIVE DATA STRUCTURE:-
+### NON PRIMITIVE DATA STRUCTURE:-
              
              1>LINEAR:-
                  
