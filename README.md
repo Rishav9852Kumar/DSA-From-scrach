@@ -35,7 +35,8 @@
                   v)Binary Heap
                   
               3)Graphs
-                  
+                  i)Graph representation
+                                a)Matrix Representation(adjacent matrix,Incedent Matrix)(For Directed and Undirected graphs)
                  
                 
                   
