@@ -1,4 +1,4 @@
-# Data-Structure-
+# Data-Structure: ![](https://visitor-badge.laobi.icu/badge?page_id=Rishav9852Kumar/Graphics-Lb)
 
 
 ## PRIMITIVE DATA STRUCTURE:-
